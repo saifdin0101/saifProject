@@ -8,7 +8,7 @@ import { BsShopWindow } from "react-icons/bs";
 
 export const Navbar = () => {
     return (
-        <nav className='flex  navbg w-full h-[100px] border-b-[4px] gap-[400px] justify-center items-center'>
+        <nav className='flex  navbg w-full h-[100px] border-b-[4px] gap-[300px] justify-center items-center'>
             <div className='text-2xl font-thin'>LionShop</div>
             <div className='flex pl-[150px] font-sans gap-[100px]'>
                 <div className=' hover:border-b-2'>Home</div>

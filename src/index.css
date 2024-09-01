@@ -75,3 +75,8 @@
 .work{
     text-align: center;
 }
+.scaleee:hover{
+  transform: scale(1.1);
+  transition: 0.5s;
+  
+}

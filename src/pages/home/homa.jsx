@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdSearch } from "react-icons/io";
 
 export const Home = () => {
+  const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("")
+
+  useEffect(() => {
+
+    const fetchRespo = async () => {
+      try {
+        let dataresp = await fetch("https://fakestoreapi.com/products");
+        let datajson = await dataresp.json();
+        setProducts(datajson);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchRespo();
+  }, []);
+
+
+
   return (
-    <div className="divbg h-[230vh] w-[100%] ">
+    <div className="divbg  w-[100%] ">
       <div>
         <div className="ml-[200px]  gap-[100px] flex justify-start items-center ">
           <div className="image-slider  border-r-[4px]">
@@ -13,7 +33,7 @@ export const Home = () => {
               <div className="image-slide bg-backgg"></div>
             </div>
           </div>
-          <div className="text-7xl sliderr absolute top-[250px] right-[600px]">
+          <div className="text-7xl sliderr absolute top-[250px] translate-x-[570px]">
             <h1>
               Find Your <br /> Clothes
             </h1>
@@ -28,37 +48,47 @@ export const Home = () => {
       </div>
       <div className="w-full flex justify-center items-center">
         <div className=" py-[40px] flex flex-col justify-center items-center gap-y-4 ">
-            <h1 className="text-3xl py-[5px]">Our Shop :</h1>
-            <div className="flex gap-10 justify-center items-center">
-                <input className="h-[55px] w-[600px] rounded-[30px]" placeholder="      Search" type="search" />
-                <div className="absolute  right-[32.5%] text-2xl p-[8px] rounded-full bg-[#d1ae7f] hover:text-[#d1ae7f] hover:bg-white "><IoMdSearch /></div>
-
+          <h1 className="text-3xl py-[5px]">Our Shop :</h1>
+          <div className="flex gap-10 justify-center items-center">
+            <input
+              onChange={(item) => setSearch(item.target.value)}
+              className="h-[55px] w-[600px] rounded-[30px]"
+              placeholder="      Search"
+              type="      search"
+            />
+            <div className="absolute  right-[32.5%] text-2xl p-[8px] rounded-full bg-[#d1ae7f] hover:text-[#d1ae7f] hover:bg-white ">
+              <IoMdSearch />
             </div>
+          </div>
         </div>
-
-        
       </div>
       <div className="w-full border-b-[4px] "></div>
       <div>
-            <h1 className="text-2xl p-[70px] pl-[100px]">ProDucts :</h1>
-            <div className="flex flex-wrap justify-center items-center gap-10">
-                <div className="h-[55vh] w-[29vh] flex flex-col  rounded-[50px] gap-[10px]">
-                    <div className=" h-[70%] brownborder rounded-[50px]"></div>
-                    <div className=" h-[25%] brownborder rounded-[50px]"></div>
+        <h1 className="text-2xl p-[70px] pl-[100px]">ProDucts :</h1>
+        <div className="flex flex-wrap justify-center items-center gap-10">
+          {
+           products.filter((item) => {
+            return search.toLowerCase() === '' || item.title.toLowerCase().includes(search.toLowerCase());
+          }).map((e, i) => (
+              <div key={i} className="h-[60vh] w-[29vh] flex flex-col rounded-[50px] gap-[10px] scaleee">
+                <div className="h-[64%]  brownborder bg-cover bg-center rounded-[50px] overflow-hidden ">
+                  <img style={{
+                    width: '29vh',
+                    height: '348px',
+
+                  }} className="" src={e.image} alt="" />
+                </div>
+                <div className="h-[30%] brownborder p-4 bg-[#f3dba6] work text-[#bd6c02] flex-col rounded-[50px] flex justify-center items-center gap-2">
+                  <div className="">{e.title}</div>
+                  <div>{e.price}"$"</div>
+                  <div></div>
 
                 </div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-                <div className="h-[45vh] w-[29vh] bg-red-500 rounded-[50px]"></div>
-
-            </div>
+              </div>
+            ))
+          }
         </div>
+      </div>
     </div>
   );
 };

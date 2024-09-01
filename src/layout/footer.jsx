@@ -20,14 +20,14 @@ export const Footer = () => {
                         <div className='text-5xl text-[#fee5b5] hover:'><TbPointerMinus /></div>
                         <div className='text-[#fee5b5]'>See More About Us</div>
                     </div>
-                    <div className='h-[25vh] w-[15vw] absolute bottom-[-175%] right-[25%] rounded-[20px] footerbg '></div>
+                    <div className='h-[25vh] w-[15vw] absolute  translate-y-[-200px] right-[25%] rounded-[20px] footerbg '></div>
                 </div>
                 <div>
-                <div  className='h-[25vh] w-[15vw] rounded-[20px]  relative z-30 bg-amber-900 flex justify-center items-center flex-col gap-y-3'>
-                    <div className='text-5xl text-[#fee5b5]'><MdMarkEmailRead /></div>
-                    <div className='text-[#fee5b5]'>LionShop-Contact.com</div>
-                </div>
-                <div className='h-[25vh] w-[15vw] absolute bottom-[-175%] right-[5%] rounded-[20px] footerbg'></div>
+                    <div className='h-[25vh] w-[15vw] rounded-[20px]  relative z-30 bg-amber-900 flex justify-center items-center flex-col gap-y-3'>
+                        <div className='text-5xl text-[#fee5b5]'><MdMarkEmailRead /></div>
+                        <div className='text-[#fee5b5]'>LionShop-Contact.com</div>
+                    </div>
+                    <div className='h-[25vh] w-[15vw] absolute translate-y-[-200px] mb-[1000px]  right-[5%] rounded-[20px] footerbg'></div>
 
                 </div>
 

@@ -6,6 +6,7 @@ module.exports = {
       backgroundImage: {
         'backgg':"url(./images/backgg.png)",
         'profile':"url(./images/profile.jpg)",
+
       },
     },
   },
