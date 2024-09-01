@@ -33,7 +33,7 @@ export const Home = () => {
               <div className="image-slide bg-backgg"></div>
             </div>
           </div>
-          <div className="text-7xl sliderr absolute top-[250px] translate-x-[570px]">
+          <div className="text-7xl  absolute top-[250px] translate-x-[570px]">
             <h1>
               Find Your <br /> Clothes
             </h1>
